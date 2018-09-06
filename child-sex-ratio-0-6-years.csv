@@ -1,37 +1,38 @@
-"Category","States","test","Child sex ratio in population (0-6 age group) - Total - 2011","Child sex ratio in population (0-6 age group) - Rural - 2001","Child sex ratio in population (0-6 age group) - Rural - 2011","Child sex ratio in population (0-6 age group) - Urban - 2001","Child sex ratio in population (0-6 age group) - Urban - 2011"
-"Country","INDIA",927,918,934,923,906,905
-"State","Andhra Pradesh",961,939,963,941,955,935
-"State","Arunachal Pradesh",964,972,960,975,980,957
-"State","Assam",965,962,967,964,943,944
-"State","Bihar",942,935,944,938,924,912
-"State","Chhattisgarh",975,969,982,977,938,937
-"State","Goa",938,942,952,945,924,940
-"State","Gujarat",883,890,906,914,837,852
-"State","Haryana",819,834,823,835,808,832
-"State","Himachal Pradesh",896,909,900,912,844,881
-"State","Jammu & Kashmir",941,862,957,865,873,850
-"State","Jharkhand",965,948,973,957,930,908
-"State","Karnataka",946,948,949,950,940,946
-"State","Kerala",960,964,961,965,958,963
-"State","Madhya Pradesh",932,918,939,923,907,901
-"State","Maharashtra",913,894,916,890,908,899
-"State","Manipur",957,930,956,923,961,949
-"State","Meghalaya",973,970,973,972,969,954
-"State","Mizoram",964,970,965,966,963,974
-"State","Nagaland",964,943,969,933,939,973
-"State","Odisha",953,941,955,946,933,913
-"State","Punjab",798,846,799,844,796,852
-"State","Rajasthan",909,888,914,892,887,874
-"State","Sikkim",963,957,966,964,922,934
-"State","Tamil Nadu",942,943,933,936,955,952
-"State","Tripura",966,957,968,960,948,947
-"State","Uttar Pradesh",916,902,921,906,890,885
-"State","Uttarakhand",908,890,918,899,872,868
-"State","West Bengal",960,956,963,959,948,947
-"Union Territory","A & N Islands",957,968,966,976,936,954
-"Union Territory","Chandigarh",845,880,847,871,845,880
-"Union Territory","D & N Haveli",979,926,1003,970,888,872
-"Union Territory","Daman & Diu",926,904,916,932,943,894
-"Union Territory","Lakshadweep",959,911,999,911,900,911
-"Union Territory","NCT of Delhi",868,871,850,814,870,873
-"Union Territory","Puducherry",967,967,967,953,967,975
+,Category,Country/ States/ Union Territories Name,Child sex ratio in population (0-6 age group) - Total - 2001,Child sex ratio in population (0-6 age group) - Total - 2011,Child sex ratio in population (0-6 age group) - Rural - 2001,Child sex ratio in population (0-6 age group) - Rural - 2011,Child sex ratio in population (0-6 age group) - Urban - 2001,Child sex ratio in population (0-6 age group) - Urban - 2011
+0,Country,INDIA,927.0,918.0,934.0,923.0,906.0,905.0
+1,State,Andhra Pradesh,961.0,939.0,963.0,941.0,955.0,935.0
+2,State,Arunachal Pradesh,964.0,972.0,960.0,975.0,980.0,957.0
+3,State,Assam,965.0,962.0,967.0,964.0,943.0,944.0
+4,State,Bihar,942.0,935.0,944.0,938.0,924.0,912.0
+5,State,Chhattisgarh,975.0,969.0,982.0,977.0,938.0,937.0
+6,State,Goa,938.0,942.0,952.0,945.0,924.0,940.0
+7,State,Gujarat,883.0,890.0,906.0,914.0,837.0,852.0
+8,State,Haryana,819.0,834.0,823.0,835.0,808.0,832.0
+9,State,Himachal Pradesh,896.0,909.0,900.0,912.0,844.0,881.0
+10,State,Jammu & Kashmir,941.0,862.0,957.0,865.0,873.0,850.0
+11,State,Jharkhand,965.0,948.0,973.0,957.0,930.0,908.0
+12,State,Karnataka,946.0,948.0,949.0,950.0,940.0,946.0
+13,State,Kerala,960.0,964.0,961.0,965.0,958.0,963.0
+14,State,Madhya Pradesh,932.0,918.0,939.0,923.0,907.0,901.0
+15,State,Maharashtra,913.0,894.0,916.0,890.0,908.0,899.0
+16,State,Manipur,957.0,930.0,956.0,923.0,961.0,949.0
+17,State,Meghalaya,973.0,970.0,973.0,972.0,969.0,954.0
+18,State,Mizoram,964.0,970.0,965.0,966.0,963.0,974.0
+19,State,Nagaland,964.0,943.0,969.0,933.0,939.0,973.0
+20,State,Odisha,953.0,941.0,955.0,946.0,933.0,913.0
+21,State,Punjab,798.0,846.0,799.0,844.0,796.0,852.0
+22,State,Rajasthan,909.0,888.0,914.0,892.0,887.0,874.0
+23,State,Sikkim,963.0,957.0,966.0,964.0,922.0,934.0
+24,State,Tamil Nadu,942.0,943.0,933.0,936.0,955.0,952.0
+25,State,Tripura,966.0,957.0,968.0,960.0,948.0,947.0
+26,State,Uttar Pradesh,916.0,902.0,921.0,906.0,890.0,885.0
+27,State,Uttarakhand,908.0,890.0,918.0,899.0,872.0,868.0
+28,State,West Bengal,960.0,956.0,963.0,959.0,948.0,947.0
+29,Union Territory,A & N Islands,957.0,968.0,966.0,976.0,936.0,954.0
+30,Union Territory,Chandigarh,845.0,880.0,847.0,871.0,845.0,880.0
+31,Union Territory,D & N Haveli,979.0,926.0,1003.0,970.0,888.0,872.0
+32,Union Territory,Daman & Diu,926.0,904.0,916.0,932.0,943.0,894.0
+33,Union Territory,Lakshadweep,959.0,911.0,999.0,911.0,900.0,911.0
+34,Union Territory,NCT of Delhi,868.0,871.0,850.0,814.0,870.0,873.0
+35,Union Territory,Puducherry,967.0,967.0,967.0,953.0,967.0,975.0
+36,State,Telangana,955.2,952.2,954.6,949.0,955.0,954.2
