@@ -18,12 +18,15 @@ gdp.rename(columns={'index': 'States'}, inplace=True)
 #.groupby('States').first()	
 #print(gdp.groupby('Items Description and Duration').first())
 gdp=pd.merge(gdp,region,on='States', how='outer')
+#gdp=gdp.fillna("NaN").replace(0,"NaN")
 #gdp=gdp.fillna("NaN").replace("NaN",' ')
 #print(gdp.isnull())
 #gdp.isnull().to_csv('null.csv')
 #find missing 0 ko nahi consider karra
-print(gdp.groupby("Region").get_group('ne').mean()) # giving mean check with or without missing
-gdp.fillna(gdp.groupby("Region").get_group('ne').mean().round(2), inplace=True)
-#print(gdp)
+#gdp=gdp.groupby("Region") # giving mean check with or without missing
+#do something about the 0
+gdp.loc[gdp['Region']=="south"]=gdp.loc[gdp['Region']=="south"].fillna(gdp.loc[gdp['Region']=="south"].mean().round(2)) #works like a charm
+#gdp.groupby('Region').get_group('south').fillna(gdp.groupby('Region').get_group('south').mean().round(2), inplace=True)
+#print(gdp.groupby('Region').get_group('south'))
 gdp.to_csv('null.csv')
 #Regions and Item Wise group then get group by year uska mean fill na?
