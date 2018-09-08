@@ -30,7 +30,7 @@ for idx, value in enumerate(economy):
 	value.drop('Duration', axis=1, inplace=True) #after merge to column drop 1 column
 	value.rename(columns={'Items Description': 'States'}, inplace=True) # change index to states
 	#value=value.fillna("NaN").replace(0,"NaN")
-	value=value.set_index('States').T.reset_index() #reset index so that indexing on removes
+	value=value.set_index('States').T.reset_index() #reset index so that indexing on removes / could have used (groupby States as_index=False)
 	value.rename(columns={'index': 'States'}, inplace=True) #indexing resets creates index header change it to states
 	value=pd.merge(value,region,on='States', how='outer') #merge region and working one
 	for i in all_regions:
