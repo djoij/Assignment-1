@@ -35,7 +35,6 @@ for idx, value in enumerate(economy):
 	value=pd.merge(value,region,on='States', how='outer') #merge region and working one
 	for i in all_regions:
 		value.loc[value['Region']==i]=value.loc[value['Region']==i].fillna(value.loc[value['Region']==i].mean().round(2))  #works like a charm
-	
 	if(idx==1 or idx ==0):
 		value.fillna(value.groupby("States").get_group('All_India GDP').mean(), inplace=True) #need to divide by no. states
 		#print("GDP")
