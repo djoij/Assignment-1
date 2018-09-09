@@ -12,6 +12,20 @@ all_regions.append('central')
 regions= pd.read_csv('regions.csv')
 
 
+literacy_rate = pd.read_csv('literacy-rate-7-years.csv')
+literacy_rate.rename(columns={'Country/ States/ Union Territories Name': 'States'}, inplace=True)
+regions= pd.read_csv('regions.csv')
+literacy_rate=pd.merge(literacy_rate,regions,on='States', how='outer')
+missing_region=literacy_rate[literacy_rate['Category'].isnull()]['Region'] #finding missing region
+for i in missing_region:
+	ch=i
+literacy_rate.fillna(literacy_rate.groupby("Region").get_group(ch).transform("mean").round(2), inplace=True)
+#literacy_rate.rename(columns={'States' : 'Country/ States/ Union Territories Name'}, inplace=True)
+literacy_rate=literacy_rate.drop('Category',axis=1)
+literacy_rate=literacy_rate.drop('Region', axis=1)
+literacy_rate=literacy_rate.replace('INDIA','All India')
+
+
 drop_rate_year=[]
 drop_rate_year.append('2012-13')
 drop_rate_year.append('2013-14')
@@ -140,6 +154,7 @@ for idx,test in enumerate(rest_data):
 	for i in combine:
 		test.loc[test['reference']==i]=test.loc[test['reference']==i].fillna(test.loc[test['reference']==i].mean().round(2))
 	test.drop('reference', axis=1, inplace=True)
+	test.loc[test['year']=='2013-14']=test.loc[test['year']=='2013-14'].fillna(test.loc[test['year']=='2013-14'].mean().round(2))
 	q=[]
 	for i in year:
 		q.append(test.loc[test['year']==i])
@@ -166,7 +181,5 @@ for i in range(1,(len(rest_data))):
 
 mergedata=pd.merge(drop_rate,hi_ed,on='States', how='outer')
 mergedata=pd.merge(mergedata,mergedata3,on='States', how='outer')
-
+mergedata=pd.merge(mergedata,literacy_rate,on='States', how='outer')
 mergedata.to_csv('mergedata.csv')
-
-

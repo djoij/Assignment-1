@@ -40,12 +40,8 @@ for idx, value in enumerate(economy):
 	value=pd.merge(value,region,on='States', how='outer') #merge region and working one
 	for i in all_regions:
 		value.loc[value['Region']==i]=value.loc[value['Region']==i].fillna(value.loc[value['Region']==i].mean().round(2))  #works like a charm
-	if(idx==1 or idx ==0):
-		value.fillna(value.groupby("States").get_group('All_India GDP').mean(), inplace=True) #need to divide by no. states
-		#print("GDP")
-	else:
-		value.fillna(value.groupby("States").get_group('All_India NDP').mean(), inplace=True) #need to divide by no. states
 		#print("NDP")
+	
 	#value.to_csv(name[idx])
 	#value.to_csv('null.csv')
 	value.drop('Region', axis=1, inplace=True)
@@ -54,10 +50,14 @@ for idx, value in enumerate(economy):
 				name=i + ' ' + name1[idx]
 				value.rename(columns={i:name}, inplace=True)
 	#value.to_csv('null.csv')
+	value=value.replace('All_India NDP','All India')
+	value=value.replace('All_India GDP','All India')
 	economy[idx]=value
 	
 
 mergedata2=economy[0]
 for i in range(1,(len(economy))):
 	mergedata2=pd.merge(mergedata2,economy[i],on='States', how='outer')
+mergedata2.fillna(mergedata2.mean().round(2), inplace=True)
 mergedata2.to_csv('economy_merge.csv')
+

@@ -21,7 +21,8 @@ for idx,j in enumerate(a):
 		j=j.drop('Region', axis=1)
 		j=j.drop('Category',axis=1)
 		#j.to_csv('check.csv')
-		a[idx]=j
+	j=j.replace('INDIA','All India')
+	a[idx]=j
 
 
 mergedata1=a[0]
