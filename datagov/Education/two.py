@@ -38,19 +38,30 @@ drop_rate.loc[drop_rate['year']=='2014-15']=drop_rate.loc[drop_rate['year']=='20
 q=[]
 for i in drop_rate_year:
 	q.append(drop_rate.loc[drop_rate['year']==i])
-a=pd.merge(q[0],q[1],on='States', how='outer')
-a=pd.merge(a,q[2],on='States', how='outer')
-a.to_csv('ifnan.csv')
+	
+for val in range(len(drop_rate_year)) :
+	q[val].drop('year', axis=1, inplace=True)
+	q[val].drop('Region', axis=1, inplace=True)
+	for i in q[val].columns.values:
+		if(i != 'States' ):
+			name='drop_out_rate' + '_' + i + '_' + drop_rate_year[val]
+			q[val].rename(columns={i:name}, inplace=True)
+
+drop_rate=q[0]
+for i in range(1,len(drop_rate_year)):
+	drop_rate=pd.merge(drop_rate,q[i],on='States', how='outer')
+#drop_rate.to_csv('check.csv')
 
 
-'''hi_ed=pd.read_csv('gross-enrolment-ratio-higher-education.csv')
+
+hi_ed=pd.read_csv('gross-enrolment-ratio-higher-education.csv')
 combine_higher_education,higher_education_year=[],[]
+higher_education_year.append('2010-11')
+higher_education_year.append('2011-12')
 higher_education_year.append('2012-13')
 higher_education_year.append('2013-14')
 higher_education_year.append('2014-15')
-higher_education_year.append('2012-13')
-higher_education_year.append('2013-14')
-higher_education_year.append('2014-15')
+higher_education_year.append('2015-16')
 for y in higher_education_year:
 	for ar in all_regions:
 		combine_higher_education.append(y + ' ' + ar)
@@ -68,16 +79,33 @@ hi_ed["reference"] = hi_ed["year"].map(str) + ' ' + hi_ed["Region"]
 for i in combine_higher_education:
 	hi_ed.loc[hi_ed['reference']==i]=hi_ed.loc[hi_ed['reference']==i].fillna(hi_ed.loc[hi_ed['reference']==i].mean().round(2))
 hi_ed.drop('reference', axis=1, inplace=True)
-hi_ed.to_csv('ifnan.csv')
-#hi_ed.to_csv('gross-enrolment-ratio-higher-education.csv')'''
+#hi_ed.to_csv('ifnan.csv')
+q=[]
+for i in higher_education_year:
+	q.append(hi_ed.loc[hi_ed['year']==i])
+	
+for val in range(len(higher_education_year)) :
+	q[val].drop('year', axis=1, inplace=True)
+	q[val].drop('Region', axis=1, inplace=True)
+
+	for i in q[val].columns.values:
+		if(i != 'States' ):
+			name='higher_education' + '_' + i + '_' + higher_education_year[val]
+			q[val].rename(columns={i:name}, inplace=True)
+	#print(q[val])
+hi_ed=q[0]
+for i in range(1,len(higher_education_year)):
+	hi_ed=pd.merge(hi_ed,q[i],on='States', how='outer')
+#hi_ed.to_csv('merge.csv')
+#hi_ed.to_csv('gross-enrolment-ratio-higher-education.csv')
 
 
-'''rest_data=[]
-#rest_data.append(pd.read_csv('gross-enrolment-ratio-schools.csv'))
-#rest_data.append(pd.read_csv('percentage-schools-computers.csv'))
-#rest_data.append(pd.read_csv('percentage-schools-drinking-water.csv'))
-#rest_data.append(pd.read_csv('percentage-schools-electricity.csv'))
-#rest_data.append(pd.read_csv('percentage-schools-girls-toilet.csv'))
+rest_data=[]
+rest_data.append(pd.read_csv('gross-enrolment-ratio-schools.csv'))
+rest_data.append(pd.read_csv('percentage-schools-computers.csv'))
+rest_data.append(pd.read_csv('percentage-schools-drinking-water.csv'))
+rest_data.append(pd.read_csv('percentage-schools-electricity.csv'))
+rest_data.append(pd.read_csv('percentage-schools-girls-toilet.csv'))
 rest_data.append(pd.read_csv('percentage-schools-boys-toilet.csv'))
 year,combine=[],[]
 year.append('2013-14')
@@ -86,8 +114,14 @@ year.append('2015-16')
 for y in year:
 	for ar in all_regions:
 		combine.append(y + ' ' + ar)
-
-for test in rest_data:
+name1=[]
+name1.append('enrolment_ratio')
+name1.append('computers')
+name1.append('drinking_water')
+name1.append('electricity')
+name1.append('girls_toilet')
+name1.append('boys_toilet')
+for idx,test in enumerate(rest_data):
 	test.rename(columns={'State_UT': 'States', 'Year':'year'}, inplace=True)
 	test=test.replace('Dadra & Nagar Haveli','D & N Haveli')
 	test=test.replace('Delhi','NCT of Delhi')
@@ -106,6 +140,33 @@ for test in rest_data:
 	for i in combine:
 		test.loc[test['reference']==i]=test.loc[test['reference']==i].fillna(test.loc[test['reference']==i].mean().round(2))
 	test.drop('reference', axis=1, inplace=True)
-	test.to_csv('ifnan.csv')'''
+	q=[]
+	for i in year:
+		q.append(test.loc[test['year']==i])
+		
+	for val in range(len(year)) :
+		q[val].drop('year', axis=1, inplace=True)
+		q[val].drop('Region', axis=1, inplace=True)
+
+		for i in q[val].columns.values:
+			if(i != 'States' ):
+				name=name1[idx] + '_' + i + '_' + year[val]
+				q[val].rename(columns={i:name}, inplace=True)
+		#print(q[val])
+	test=q[0]
+	for i in range(1,len(year)):
+		test=pd.merge(test,q[i],on='States', how='outer')
+	#test.to_csv('ifnan.csv')
+	rest_data[idx]=test
+
+mergedata3=rest_data[0]
+for i in range(1,(len(rest_data))):
+	mergedata3=pd.merge(mergedata3,rest_data[i],on='States', how='outer')
+
+
+mergedata=pd.merge(drop_rate,hi_ed,on='States', how='outer')
+mergedata=pd.merge(mergedata,mergedata3,on='States', how='outer')
+
+mergedata.to_csv('mergedata.csv')
 
 
