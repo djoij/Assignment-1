@@ -10,13 +10,15 @@ f_d=f_d.fillna(0)
 b=[]
 for i in range(37):
 	a=[]
-	for j in range(2,360):
+	for j in range(2,361):
 		a.append(f_d.iloc[i][j])
 	b.append(a)
+l=len(b)
+print(b[l-1])
 vec=[]
 for i in range(1,37):
 	sum=0
-	for j in range(356):
+	for j in range(357):
 		sum=sum+(b[0][j]-b[i][j]) ** 2	
 	vec.append(math.sqrt(sum))
 s=[]

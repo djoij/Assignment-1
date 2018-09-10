@@ -182,4 +182,4 @@ for i in range(1,(len(rest_data))):
 mergedata=pd.merge(drop_rate,hi_ed,on='States', how='outer')
 mergedata=pd.merge(mergedata,mergedata3,on='States', how='outer')
 mergedata=pd.merge(mergedata,literacy_rate,on='States', how='outer')
-mergedata.to_csv('mergedata.csv')
+mergedata.to_csv('mergedata_education.csv')

@@ -8,15 +8,16 @@ f_d=f_d.fillna(0)
 b=[]
 for i in range(37):
 	a=[]
-	for j in range(2,360):
+	for j in range(2,361):
 		a.append(f_d.iloc[i][j])
 	b.append(a)
+#print(len(b[0]))
 #print(len(b))
 b_normalized = preprocessing.normalize(b, norm='l2')
 vec=[]
 for i in range(1,37):
 	sum=0
-	for j in range(356):
+	for j in range(357):
 		sum=sum+b_normalized[0][j]*b_normalized[i][j]
 	vec.append(sum)
 

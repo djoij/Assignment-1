@@ -31,7 +31,7 @@ for idx, value in enumerate(economy):
 	#new column by combining 2
 	value["Items Description"] = value["Items Description"].map(str) + '_' + value["Duration"]
 	#Items  Desc, Item Desc
-	value.rename(columns={'Andaman & Nicobar Islands': 'A & N Islands', 'Delhi':'NCT of Delhi','West Bengal1':'West Bengal'}, inplace=True) #making same as region data
+	value.rename(columns={'Andaman & Nicobar Islands': 'A & N Islands', 'Delhi':'NCT of Delhi','West Bengal1':'West Bengal','Andhra Pradesh ':'Andhra Pradesh'}, inplace=True) #making same as region data
 	value.drop('Duration', axis=1, inplace=True) #after merge to column drop 1 column
 	value.rename(columns={'Items Description': 'States'}, inplace=True) # change index to states
 	#value=value.fillna("NaN").replace(0,"NaN")
