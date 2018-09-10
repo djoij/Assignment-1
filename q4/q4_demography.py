@@ -42,7 +42,6 @@ def euclidian(r_int):
 for i in range(1):
 	r_int=random.randint(0,35)
 	reg=f_d.iloc[r_int+1][19]
-	print(reg)
 	same_class=np.where(f_d["Region"] == reg)
 	same_class=np.asarray(same_class)
 	same_class=same_class[0]	
