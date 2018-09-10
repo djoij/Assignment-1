@@ -258,9 +258,13 @@ for i in range(1,(len(rest_data))):
 mergedata=pd.merge(drop_rate,hi_ed,on='States', how='outer')
 mergedata=pd.merge(mergedata,mergedata3,on='States', how='outer')
 mergedata=pd.merge(mergedata,literacy_rate,on='States', how='outer')
-
 final_merge=pd.merge(mergedata1,mergedata2,on='States', how='outer')
 final_merge=pd.merge(final_merge,mergedata,on='States', how='outer')
+
+
+final_merge=pd.merge(final_merge,region,on='States', how='outer')
+final_merge.loc[final_merge['Region']=='south']=final_merge.loc[final_merge['Region']=='south'].fillna(final_merge.loc[final_merge['Region']=='south'].mean().round(2))
+final_merge.drop('Region', axis=1, inplace=True)
 final_merge.rename(columns={'States':'Country/State/UT_Name'}, inplace=True)
 final_merge.to_csv('Final_Merge.csv')
 print(final_merge.shape)

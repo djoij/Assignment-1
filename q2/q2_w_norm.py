@@ -3,6 +3,7 @@ import numpy as np
 from sklearn import preprocessing
 from operator import itemgetter, attrgetter
 f_d = pd.read_csv('Final_Merge.csv')
+
 f_d=f_d.fillna(0)
 b=[]
 for i in range(37):
@@ -28,7 +29,7 @@ ind=[]
 for i in range(5):
 	(a,b)=s[i]
 	ind.append(b+1)
-print(ind)
+#print(ind)
 for i in range(len(ind)):
 	n=ind[i]
 	print(f_d.iloc[n][1])
